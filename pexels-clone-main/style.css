@@ -299,3 +299,19 @@
   cursor: pointer;
   text-decoration: underline;
 }
+
+/* Style for the logout button */
+#logoutButton {
+  background-color: transparent;
+    color: #fff;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+/* Change background color on hover */
+.logoutButton:hover {
+  background-color: #ff0000; /* Darker red on hover */
+}

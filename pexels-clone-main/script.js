@@ -34,8 +34,8 @@ const downloadImg = (imgdownload) => {
         anchor.href = URL.createObjectURL(blob);
         anchor.download = new Date().getTime();
         anchor.click();
-    })
-}
+    });
+};
 
 const genratePics = (img) => {
   console.log(img);
@@ -59,6 +59,40 @@ const genratePics = (img) => {
         </div>
       </li>`
   );
+};
+
+// Function to display uploaded images from Firestore
+const displayUploadedImages = () => {
+  db.collection('uploadedImages')
+      .orderBy('timestamp', 'desc') // Optional: Sort by timestamp
+      .get()
+      .then((snapshot) => {
+          snapshot.forEach((doc) => {
+              const imgData = doc.data();
+              const imgElement = document.createElement('li');
+              imgElement.classList.add('pic_list'); // Use existing class for styling
+              imgElement.innerHTML = `
+                  <img src="${imgData.url}" alt="User Uploaded Image" />
+                  <div class="details">
+                      <div class="top_details_header">
+                          <button><i class="fa fa-clone" aria-hidden="true"></i></button>
+                          <button><i class="fa fa-heart-o" aria-hidden="true"></i></button>
+                      </div>
+                      <div class="bottom_details_header">
+                          <div class="shooter">
+                              <img src="images/profileimg.png" alt="">
+                              <h6>${imgData.userId}</h6> <!-- Display the user ID or username -->
+                          </div>
+                          <button onclick="downloadImg('${imgData.url}')"><i class="fa fa-download" aria-hidden="true"></i></button>
+                      </div>
+                  </div>
+              `;
+              pics.prepend(imgElement); // Add the new image to the top
+          });
+      })
+      .catch((error) => {
+          console.error('Error fetching images:', error);
+      });
 };
 
 // Define the getImages function
@@ -165,29 +199,23 @@ authForm.addEventListener('submit', (e) => {
 // Monitor Auth State Changes
 auth.onAuthStateChanged((user) => {
   if (user) {
-    console.log('User is logged in:', user.email);
-    // Show upload button when logged in
-    document.querySelector('.upload').style.display = 'block';
+      console.log('User is logged in:', user.email);
+      document.querySelector('.upload').style.display = 'block'; // Show upload button
+      logoutButton.style.display = 'block'; // Show logout button
   } else {
-    console.log('No user is logged in.');
-    // Hide upload button when logged out
-    document.querySelector('.upload').style.display = 'none';
+      console.log('No user is logged in.');
+      document.querySelector('.upload').style.display = 'none'; // Hide upload button
+      logoutButton.style.display = 'none'; // Hide logout button
   }
 });
 
-// Logout Functionality
+// Logout functionality
 logoutButton.addEventListener('click', () => {
-  auth.signOut()
-      .then(() => {
-          console.log('User logged out successfully.');
-          alert('You have been logged out.'); // Optional: Inform the user
-          // Optionally, hide the upload button and reset the UI
-          document.querySelector('.upload').style.display = 'none';
-      })
-      .catch((error) => {
-          console.error('Error logging out:', error);
-          alert('Error logging out. Please try again.');
-      });
+  auth.signOut().then(() => {
+      console.log('User logged out.');
+  }).catch((error) => {
+      console.error('Error logging out:', error);
+  });
 });
 
 // Close Modal When Clicking Outside the Modal Content
