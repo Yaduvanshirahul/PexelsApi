@@ -1,0 +1,301 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .container {
+    width: 100%;
+    height: 80vh;
+    background-image: url(images/pixelbg.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+  .nav_brand {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 30px;
+  }
+  .nav_brand .menu_nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+  .menu_nav button {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+    cursor: pointer;
+  }
+  .menu_nav .profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .menu_nav button:last-child {
+    background-color: #fff;
+    color: #000;
+    padding: 13px 20px;
+    border-radius: 4px;
+  }
+  .center_container_part {
+    width: 40%;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .center_container_part h3 {
+    font-size: 1.8rem;
+    font-weight: lighter;
+    margin-bottom: 20px;
+  }
+  .center_container_part .search_input {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .search_input input {
+    width: 100%;
+    height: 45px;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+  }
+  .search_input i {
+    color: #00000091;
+    position: absolute;
+    right: 2%;
+  }
+  .bottom_text_center p {
+    font-size: 1.1rem;
+  }
+  .bottom_text_center p span {
+    opacity: 0.7;
+  }
+  .btns {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  .btns button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 40px;
+    text-transform: capitalize;
+    transition-duration: 300ms;
+    cursor: pointer;
+  }
+  .btns button:first-child {
+    background-color: #000;
+    color: #fff;
+  }
+  .btns button:hover {
+    opacity: 0.7;
+  }
+  .text_ {
+    font-size: 1.6rem;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+    opacity: 0.7;
+  }
+  .img_container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .img_container .pics {
+    gap: 15px;
+    max-width: 95%;
+    margin-top: 45px;
+    list-style: none;
+    columns: 5 340px;
+  }
+  .pics .pic_list {
+    display: flex;
+    overflow: hidden;
+    margin-bottom: 15px;
+    position: relative;
+    cursor: pointer;
+  }
+  .pic_list img {
+    width: 100%;
+    z-index: 2;
+    position: relative;
+  }
+  .details {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.185);
+    position: absolute;
+    z-index: 99;
+    padding: 15px;
+    display: none;
+  }
+  .top_details_header {
+    float: right;
+    display: flex;
+    gap: 10px;
+  }
+  .top_details_header button {
+    background-color: #fff;
+    outline: none;
+    border: none;
+    font-size: 1.2rem;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  .bottom_details_header {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .bottom_details_header .shooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  .bottom_details_header .shooter img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .bottom_details_header .shooter h6 {
+    color: #ffffffd3;
+    font-size: 1rem;
+  }
+  .bottom_details_header button {
+    background-color: #fff;
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    padding: 15px;
+    border-radius: 10px;
+    color: #000000cb;
+    position: absolute;
+    right: 8%;
+    bottom: 2%;
+    cursor: pointer;
+  }
+  
+  .pic_list:hover .details {
+    display: block;
+  }
+  .load {
+    padding: 20px 40px;
+    background-color: rgb(62, 129, 62);
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    cursor: pointer;
+    transition-duration: 200ms;
+  }
+  .load:hover {
+    opacity: 0.6;
+  }
+
+  /* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#authForm input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#authForm button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#authForm button:hover {
+  background-color: #45a049;
+}
+
+#authToggle {
+  text-align: center;
+  margin-top: 10px;
+}
+
+#authToggle span {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
