@@ -310,3 +310,4 @@ imageUpload.addEventListener('change', (e) => {
 });
 
 // ===================== Image Upload Integration Ends Here ===================== //
+
